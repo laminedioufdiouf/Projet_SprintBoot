@@ -55,4 +55,5 @@ public class Compte {
         this.partenaire = partenaire;
     }
 
+
 }

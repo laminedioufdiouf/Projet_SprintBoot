@@ -3,6 +3,7 @@ package com.filerouge.ld.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import java.util.Date;
 @Entity
 @CrossOrigin
 @RequestMapping(value = "/depot")
+
 public class Depot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +22,7 @@ public class Depot {
     @Column(length = 20)
     private int solde;
     @DateTimeFormat(pattern ="yyyy-MM-dd")
-    private String datedepot;
+    private Date datedepot;
     @JoinColumn(name="compte_id",referencedColumnName = "id")
     // private Compte compte;
 
@@ -29,7 +31,7 @@ public class Depot {
     // private User user;
     @ManyToOne(optional = false)
     //@JoinTable(name="depot",joinColumns = @JoinColumn(name = "compte_id"),
-    // inverseJoinColumns = @JoinColumn(name="user_id"))
+     //inverseJoinColumns = @JoinColumn(name="user_id"))
     @JsonIgnoreProperties("depot")
     private Compte compte;
     @JoinColumn(name = "user_id",referencedColumnName = "id")
@@ -62,11 +64,11 @@ public class Depot {
         this.solde = solde;
     }
 
-    public String getDatedepot() {
+    public Date getDatedepot() {
         return datedepot;
     }
 
-    public void setDatedepot(String datedepot) {
+    public void setDatedepot(Date datedepot) {
         this.datedepot = datedepot;
     }
 

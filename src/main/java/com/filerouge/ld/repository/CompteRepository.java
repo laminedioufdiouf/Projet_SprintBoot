@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface CompteRepository extends JpaRepository<Compte, Integer> {
     Optional<Compte> findOneByNumerocompte(String numerocompte);
+    Optional<Compte> findByNumerocompte(int numerocompte);
     Boolean existsByNumerocompte(String numerocompte);
     Optional<Compte> findOneById(Integer id);
 }
